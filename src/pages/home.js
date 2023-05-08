@@ -22,9 +22,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function HomeScreen() {
-  const [file, setFile] = useState(null);
-
+export default function HomeScreen({ navigation }) {
   const pickFile = async () => {
     const result = await DocumentPicker.getDocumentAsync({
       copyToCacheDirectory: false,
@@ -49,7 +47,9 @@ export default function HomeScreen() {
       originalUri: result.uri,
       content,
     });
-  }
+
+    navigation.navigate('Editor');
+  };
 
   return (
     <SafeAreaView style={styles.container} >
