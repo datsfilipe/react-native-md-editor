@@ -12,6 +12,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "expo": "~48.0.15",
+    "expo-clipboard": "^4.1.2",
     "expo-document-picker": "^11.2.2",
     "expo-status-bar": "~1.4.4",
     "jotai": "^2.1.0",
