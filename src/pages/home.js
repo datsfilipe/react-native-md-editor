@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
-import { useState } from 'react';
 import { cacheDirectory, readAsStringAsync, copyAsync, getInfoAsync, makeDirectoryAsync } from 'expo-file-system'
+import { EditorStore, fileAtom } from '../stores/editorStore';
 
 // the reason for creating the cache file manually is https://github.com/expo/expo/issues/21792
 const createCacheFile = async ({ name, uri }) => {
@@ -43,9 +43,10 @@ export default function HomeScreen() {
 
     const content = await readAsStringAsync(cacheFile, { encoding: 'utf8' });
 
-    setFile({
+    EditorStore.set(fileAtom, {
       name: result.name,
       uri: cacheFile,
+      originalUri: result.uri,
       content,
     });
   }
